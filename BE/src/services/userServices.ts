@@ -81,7 +81,6 @@ export const updateProfileUser = async (
   body: profile,
   files: { [fieldname: string]: Express.Multer.File[] }
 ) => {
-  // console.log("🚀 ~ files:", files)
 
 
   const updateProfile = await db.profile.update({
@@ -118,8 +117,11 @@ export const updateProfileUser = async (
       select: { cover: true },
     });
 
-    const publicId = oldThreadData?.cover?.split("upload").pop()?.slice(13).split(".").shift();
-    cloudinary.uploader.destroy(publicId as string);
+    if (oldThreadData) {
+      const publicId = oldThreadData?.cover?.split("upload").pop()?.slice(13).split(".").shift();
+      cloudinary.uploader.destroy(publicId as string);
+    }
+
     await db.profile.update({
       where: {
         userId: userId
@@ -152,8 +154,10 @@ export const updateProfileUser = async (
       select: { avatar: true },
     });
 
-    const publicId = oldThreadData?.avatar?.split("upload").pop()?.slice(13).split(".").shift();
-    cloudinary.uploader.destroy(publicId as string);
+    if (oldThreadData) {
+      const publicId = oldThreadData?.avatar?.split("upload").pop()?.slice(13).split(".").shift();
+      cloudinary.uploader.destroy(publicId as string);
+    }
 
     await db.profile.update({
       where: {

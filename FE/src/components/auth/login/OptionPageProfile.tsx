@@ -5,6 +5,7 @@ import { OptionCover } from "./OptionCover";
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { IUpdateProfilePut, updateProfileAsync } from '@/lib/redux/async/profileUpdate';
+import { useCheckToken } from '@/lib/hooks/useCheckToken';
 
 export interface IPropsUpdate {
     setValueUpdateProfile: React.Dispatch<React.SetStateAction<IUpdateProfilePut>>
@@ -25,15 +26,16 @@ const OptionPageProfile = () => {
     const [valueCover, setValueCover] = useState("")
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const { checkToken } = useCheckToken()
 
     // if (profile?.avatar || profile?.cover !== null) {
     //     navigate("/")
     // }
 
-    console.log("🚀 ~ OptionPageProfile ~ valueUpdateProfile:", valueUpdateProfile)
     const handleUpdateProfile = () => {
         dispatch(updateProfileAsync(valueUpdateProfile))
         // dispatch(UPDATEPROFILE({ cover: valueCover, profile: valueProfile, name: "Moh Ryan Khalifatul Huda" }))
+        checkToken();
         navigate("/")
     }
     return (
