@@ -82,7 +82,6 @@ export const updateProfileUser = async (
   files: { [fieldname: string]: Express.Multer.File[] }
 ) => {
 
-
   const updateProfile = await db.profile.update({
     where: {
       userId: userId
@@ -112,15 +111,15 @@ export const updateProfileUser = async (
     })
     fs.unlinkSync(cover);
   } else {
-    const oldThreadData = await db.profile.findUnique({
-      where: { userId: userId },
-      select: { cover: true },
-    });
+    // const oldThreadData = await db.profile.findUnique({
+    //   where: { userId: userId },
+    //   select: { cover: true },
+    // });
 
-    if (oldThreadData) {
-      const publicId = oldThreadData?.cover?.split("upload").pop()?.slice(13).split(".").shift();
-      cloudinary.uploader.destroy(publicId as string);
-    }
+    // if (oldThreadData) {
+    //   const publicId = oldThreadData?.cover?.split("upload").pop()?.slice(13).split(".").shift();
+    //   cloudinary.uploader.destroy(publicId as string);
+    // }
 
     await db.profile.update({
       where: {
@@ -149,15 +148,15 @@ export const updateProfileUser = async (
     fs.unlinkSync(avatar);
   } else {
 
-    const oldThreadData = await db.profile.findUnique({
-      where: { userId: userId },
-      select: { avatar: true },
-    });
+    // const oldThreadData = await db.profile.findUnique({
+    //   where: { userId: userId },
+    //   select: { avatar: true },
+    // });
 
-    if (oldThreadData) {
-      const publicId = oldThreadData?.avatar?.split("upload").pop()?.slice(13).split(".").shift();
-      cloudinary.uploader.destroy(publicId as string);
-    }
+    // if (oldThreadData) {
+    //   const publicId = oldThreadData?.avatar?.split("upload").pop()?.slice(13).split(".").shift();
+    //   cloudinary.uploader.destroy(publicId as string);
+    // }
 
     await db.profile.update({
       where: {
