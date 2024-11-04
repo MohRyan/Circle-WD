@@ -16,12 +16,12 @@ export interface IPropsUpdate {
 
 const OptionPageProfile = () => {
     const { fullname, profile } = useAppSelector((state) => state.auth.userLogin)
-    console.log("🚀 ~ OptionPageProfile ~ profile:", profile?.avatar)
     const [valueUpdateProfile, setValueUpdateProfile] = useState<IUpdateProfilePut>({
         avatar: null,
         cover: null,
         bio: ""
     })
+    console.log("🚀 ~ OptionPageProfile ~ profile:", profile?.avatar)
     const [valueAvatar, setValueAvatar] = useState("")
     const [valueCover, setValueCover] = useState("")
     const navigate = useNavigate()
