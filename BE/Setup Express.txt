@@ -1,0 +1,15 @@
+npm init -y
+npm i express dotenv
+npm i -D typescript @types/express @types/node
+npx tsc --init
+npm i -D nodemon cors
+npm i --save-dev @types/cors
+npm i ts-node
+npm install @prisma/client
+npm install prisma --save-dev
+npx prisma init
+npm i jsonwebtoken bcrypt
+npm i --save-dev @types/jsonwebtoken @types/bcrypt
+npm i multer joi
+npm i --save-dev @types/multer
+

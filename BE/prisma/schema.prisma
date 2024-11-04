@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model users {
+  id         String  @id @default(uuid())
+  username   String  @unique
+  fullname   String
+  email      String  @unique
+  password   String
+  isVerified Boolean @default(false)
+  isBan      Boolean @default(false)
+
+  follower  follow[] @relation("follower")
+  following follow[] @relation("following")
+  profile   profile?
+  thread    thread[]
+  like      like[]   @relation("user")
+}
+
+model profile {
+  id     String  @id @default(uuid())
+  userId String  @unique
+  user   users   @relation(fields: [userId], references: [id])
+  avatar String?
+  cover  String?
+  bio    String?
+}
+
+model thread {
+  id        String        @id @default(uuid())
+  content   String?
+  userId    String
+  author    users         @relation(fields: [userId], references: [id])
+  like      like[]        @relation("thread")
+  threadRId String?
+  parent    thread?       @relation("threadReplies", fields: [threadRId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  replies   thread[]      @relation("threadReplies")
+  image     threadImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model threadImage {
+  id       String @id @default(uuid())
+  image    String
+  threadId String
+  thread   thread @relation(fields: [threadId], references: [id])
+}
+
+model like {
+  threadId String
+  userId   String
+  thread   thread @relation("thread", fields: [threadId], references: [id])
+  user     users  @relation("user", fields: [userId], references: [id])
+
+  @@id([threadId, userId])
+}
+
+model follow {
+  followerId  String
+  followingId String
+  follower    users  @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following   users  @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, followingId])
+}
+
+model Verification {
+  id Int @id @default(autoincrement())
+
+  token String           @unique
+  type  VerificationType @default(EMAIL)
+
+  @@map("verifications")
+}
+
+enum VerificationType {
+  FORGOT_PASSWORD
+  EMAIL
+}

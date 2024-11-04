@@ -1,0 +1,44 @@
+/* .debug-screens::before {
+  position: fixed;
+  z-index: 2147483647;
+  bottom: 0;
+  left: 0;
+  padding: 1em 1em;
+  font-size: 15px;
+  line-height: 1;
+  font-family: sans-serif;
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 0 0 1px #fff;
+  content: 'screen: Layar Hp kebawah';
+}
+
+@screen sm {
+  .debug-screens::before {
+    content: 'screen: Layar Hp / sm';
+  }
+}
+
+@screen md {
+  .debug-screens::before {
+    content: 'screen: Layar Tab / md';
+  }
+}
+
+@screen lg {
+  .debug-screens::before {
+    content: 'screen: Layar Laptop / lg';
+  }
+}
+
+@screen xl {
+  .debug-screens::before {
+    content: 'screen: Layar Dekstop / xl';
+  }
+}
+
+@screen 2xl {
+  .debug-screens::before {
+    content: 'screen: 2xl';
+  }
+} */
