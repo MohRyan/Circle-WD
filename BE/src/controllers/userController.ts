@@ -94,7 +94,6 @@ export const updateUser = async (req: Request, res: Response) => {
 export const updateProfileUser = async (req: Request, res: Response) => {
   try {
     const { body } = req;
-    console.log("🚀 ~ updateProfileUser ~ body:", body)
     const { id } = res.locals.userId;
     const files = req.files as { [fieldname: string]: Express.Multer.File[] };
 

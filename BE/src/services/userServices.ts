@@ -84,7 +84,7 @@ export const updateProfileUser = async (
   // console.log("🚀 ~ files:", files)
 
 
-  const updateProfile = db.profile.update({
+  const updateProfile = await db.profile.update({
     where: {
       userId: userId
     },
