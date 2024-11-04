@@ -6,7 +6,7 @@ const AuthLayout = () => {
   return (
     <>
       <div className="relative w-screen h-screen bg-first">
-        <StatusProject responsive={false} dummy={true} real={false} />
+        <StatusProject responsive={true} dummy={false} real={true} />
         <Toaster />
         <Outlet />
       </div>
