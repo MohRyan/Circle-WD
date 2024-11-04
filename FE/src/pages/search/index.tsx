@@ -1,7 +1,7 @@
 import { IconProfileUser, LoadingDefault } from '@/components/SVG'
 import { Input } from '@/components/ui/input'
 import { API } from '@/lib/api'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdPersonSearch } from "react-icons/md"
 import FollowButton from '../follows/components/FollowButton'
 

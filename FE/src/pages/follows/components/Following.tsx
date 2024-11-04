@@ -1,6 +1,6 @@
 import { IconProfileUser, LoadingDefault } from '@/components/SVG'
 import { API } from '@/lib/api'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface IFollow {
     follower: {

@@ -3,7 +3,6 @@ import Post from "./components/Post";
 import useScroll from "@/lib/hooks/useScroll";
 import { useBlobArray } from "@/lib/hooks/useBlobArray";
 import { ThreadsCard, ThreadsV } from "./components/ThreadsCard";
-import { LoadingDefault } from "@/components/SVG";
 import { SkeletonThreadsCard } from "@/components/Skeleton";
 
 // export interface IThreads {
@@ -14,7 +13,7 @@ import { SkeletonThreadsCard } from "@/components/Skeleton";
 
 
 const Threads = () => {
-  const { show, lastScrollY, setLastScrollY } = useScroll()
+  const { show, lastScrollY } = useScroll()
   const { dataThreads, dataVThreads, dataThreadsPost, setDataThreadsPost, handleFileChange, handleFormThreads, handleRemoveImage, getThreads, isLoadingThreads, isLoadingButtonPost } = useBlobArray()
   // const threads = useAppSelector((state) => state.threads)
   const token = localStorage.getItem("token")

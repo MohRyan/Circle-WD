@@ -1,10 +1,9 @@
 import NewtonLoader from '@/components/loaders/NewtonLoader'
 import { Button } from '@/components/ui/button'
-import { getThreadsByUserId } from '@/lib/api/call/threadsProfileApi'
 import { useCheckToken } from '@/lib/hooks/useCheckToken'
 import { useAppDispatch, useAppSelector } from '@/lib/redux'
 import { fetchFollowStatus, handleFollow } from '@/lib/redux/async/followStatus'
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const FollowButton = ({ userId }: { userId: string }) => {
     const dispatch = useAppDispatch()

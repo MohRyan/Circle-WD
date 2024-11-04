@@ -1,14 +1,12 @@
-import NewtonLoader from '@/components/loaders/NewtonLoader'
-import { IconLove, LoadingDefault } from '@/components/SVG'
-import { Button } from '@/components/ui/button'
+import { IconLove } from '@/components/SVG'
 import { API } from '@/lib/api'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const LikeButton = ({ threadId }: { threadId: string }) => {
     const [status, setStatus] = useState<boolean>(false)
     const [totalLike, setTotalLike] = useState(0);
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [isLoadingButton, setIsLoadingButton] = useState<boolean>(false)
+    // const [isLoadingButton, setIsLoadingButton] = useState<boolean>(false)
 
     const handleStatus = async () => {
         // await API.get(`/like/${threadId}`, {

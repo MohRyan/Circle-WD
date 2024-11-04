@@ -59,9 +59,6 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(updateProfileAsync.pending, (state, action) => {
-                return
-            })
             .addCase(updateProfileAsync.fulfilled, (state, action: PayloadAction<UpdateProfileAsyncPayload>) => {
                 state.userLogin.profile!.avatar = action.payload.avatar
                 state.userLogin.profile!.cover = action.payload.cover
@@ -72,9 +69,6 @@ const authSlice = createSlice({
                 // }
                 // if (action.payload.bio) {
                 // }
-            })
-            .addCase(updateProfileAsync.rejected, (state, action) => {
-                return
             })
     }
 

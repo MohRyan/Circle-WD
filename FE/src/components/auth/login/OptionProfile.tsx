@@ -1,6 +1,5 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { IUpdateProfilePut } from "@/lib/redux/async/profileUpdate"
 import { useState } from "react"
 import { LuImagePlus } from "react-icons/lu"
 import { IPropsUpdate } from "./OptionPageProfile"

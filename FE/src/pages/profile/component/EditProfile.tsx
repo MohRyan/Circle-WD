@@ -8,12 +8,12 @@ import { Input } from '@/components/ui/input'
 import UseShowProfile from '@/lib/hooks/useShowProfile'
 import { useAppSelector } from '@/lib/redux'
 import { IUpdateAllProfilePut } from '@/lib/redux/async/profileUpdate'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FormEditAllProfile from './FormEditAllProfile'
 
 const EditProfile = () => {
-    const { profile, fullname, username, follower, following } = useAppSelector((state) => state.auth.userLogin)
-    const { editProfile, handleNavigateProfile, handleNavigateNavbarOutProfile, handleOutEditProfile } = UseShowProfile()
+    const { profile, fullname, username } = useAppSelector((state) => state.auth.userLogin)
+    const { editProfile, handleNavigateProfile, handleOutEditProfile } = UseShowProfile()
     const [valueAvatar, setValueAvatar] = useState("")
     const [valueCover, setValueCover] = useState("")
     const [valueUpdateAllProfile, setValueUpdateAllProfile] = useState<IUpdateAllProfilePut>({

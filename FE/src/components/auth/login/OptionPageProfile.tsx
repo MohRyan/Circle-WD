@@ -1,12 +1,10 @@
 import { useAppDispatch, useAppSelector } from '@/lib/redux'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { OptionProfile } from "./OptionProfile";
 import { OptionCover } from "./OptionCover";
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { IUpdateProfilePut, updateProfileAsync } from '@/lib/redux/async/profileUpdate';
-import { useCheckToken } from '@/lib/hooks/useCheckToken';
-import { UPDATEPROFILE } from '@/lib/redux/slice/auth';
 
 export interface IPropsUpdate {
     setValueUpdateProfile: React.Dispatch<React.SetStateAction<IUpdateProfilePut>>

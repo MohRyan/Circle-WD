@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { API } from "@/lib/api";
-import axios from "axios";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 export interface IUser {
@@ -26,7 +25,8 @@ const Register = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<bo
     })
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [isError, setIsError] = useState<boolean>(false)
-    const [error, setError] = useState<string>("")
+    console.log("🚀 ~ Register ~ isError:", isError)
+    // const [error, setError] = useState<string>("")
 
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()

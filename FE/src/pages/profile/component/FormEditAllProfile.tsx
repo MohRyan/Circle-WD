@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useAppSelector } from '@/lib/redux'
 import { IUpdateAllProfilePut } from '@/lib/redux/async/profileUpdate'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface IPropsUpdateAllProfile {
     setValueUpdateAllProfile: React.Dispatch<React.SetStateAction<IUpdateAllProfilePut>>
@@ -11,7 +11,7 @@ export interface IPropsUpdateAllProfile {
 }
 
 const FormEditAllProfile = ({ setValueUpdateAllProfile, valueUpdateAllProfile }: IPropsUpdateAllProfile) => {
-    const { profile, fullname, username, follower, following } = useAppSelector((state) => state.auth.userLogin)
+    const { profile, fullname, username } = useAppSelector((state) => state.auth.userLogin)
     const [defaultValue, setDefaultValue] = useState({
         bio: profile?.bio,
         fullname,
@@ -20,7 +20,7 @@ const FormEditAllProfile = ({ setValueUpdateAllProfile, valueUpdateAllProfile }:
     const [bio, setBio] = useState<string>("");
     const [DFullname, setDFullname] = useState<string>("");
     const [DUsername, setDUsername] = useState<string>("");
-    // setValueUpdateAllProfile({ ...valueUpdateAllProfile!, bio: e.target.value })
+    setValueUpdateAllProfile({ ...valueUpdateAllProfile!, bio: bio })
     useEffect(() => {
         if (profile?.bio) {
             setBio(defaultValue.bio!);

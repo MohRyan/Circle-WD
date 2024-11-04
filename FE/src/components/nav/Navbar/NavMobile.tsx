@@ -1,4 +1,4 @@
-import { IconHomeUser, IconLogout, IconLove, IconMenu, IconProfileUser, IconSearchUser } from "@/components/SVG"
+import { IconHomeUser, IconLogout, IconLove, IconProfileUser, IconSearchUser } from "@/components/SVG"
 import useScroll from "@/lib/hooks/useScroll";
 import UseShowProfile from "@/lib/hooks/useShowProfile"
 import { useAppDispatch } from "@/lib/redux";

@@ -1,6 +1,5 @@
-import { useAppDispatch, useAppSelector } from "@/lib/redux";
+import { useAppDispatch } from "@/lib/redux";
 import { CHECK_LOGIN } from "@/lib/redux/slice/auth";
-import { useEffect } from "react";
 import { API } from "@/lib/api";
 
 

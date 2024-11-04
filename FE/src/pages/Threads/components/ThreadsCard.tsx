@@ -1,8 +1,7 @@
-import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { useAppSelector } from '@/lib/redux'
-import { IThreads, IUser } from '@/lib/redux/type'
+import { IThreads } from '@/lib/redux/type'
 import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { FaTrash } from "react-icons/fa"
 import { MdEdit } from "react-icons/md"

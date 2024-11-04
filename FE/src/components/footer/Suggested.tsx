@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Button } from '../ui/button'
-import { IUser } from '@/lib/redux/type'
+import { useEffect, useState } from 'react'
 import { API } from '@/lib/api'
 import { ISearch } from '@/pages/search'
 import { IconProfileUser } from '../SVG'
