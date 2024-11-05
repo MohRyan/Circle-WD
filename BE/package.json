@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon server.ts",
     "build": "tsc",
-    "start": "node dist/server.ts",
+    "start": "nodemon server.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {
