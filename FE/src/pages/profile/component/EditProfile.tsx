@@ -69,13 +69,26 @@ const EditProfile = () => {
 
                                         </CarouselContent>
                                     </Carousel>
+                                    {typeof profile?.cover !== 'string' ?
+                                        <>
+                                            {valueCover !== "" ?
+                                                <img src={valueCover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
 
-                                    {valueCover !== "" ?
-                                        <img src={valueCover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
-
+                                                :
+                                                <div className="flex items-center justify-center object-cover w-full text-6xl bg-red-200 rounded-lg h-52">
+                                                    <span>{username?.split("").slice(0).join("").toLocaleLowerCase()}</span>
+                                                </div>
+                                            }
+                                        </>
                                         :
-                                        <img src={profile?.cover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
+                                        <>
+                                            {valueCover !== "" ?
+                                                <img src={valueCover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
 
+                                                :
+                                                <img src={profile?.cover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
+                                            }
+                                        </>
                                     }
                                 </div>
 
@@ -110,11 +123,27 @@ const EditProfile = () => {
 
                                         </CarouselContent>
                                     </Carousel>
+                                    {typeof profile?.avatar !== 'string' ?
+                                        <>
+                                            {valueAvatar !== "" ?
+                                                <img src={valueAvatar} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
 
-                                    {valueAvatar !== "" ?
-                                        <img src={valueAvatar} onClick={handleNavigateProfile} className="absolute object-cover w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+                                                :
+                                                <div className="absolute flex items-center justify-center object-cover w-32 h-32 p-1 text-4xl bg-green-600 rounded-full cursor-pointer -bottom-12 left-20">
+                                                    {/* <LoadingDefault /> */}
+                                                    <span onClick={handleNavigateProfile}>{username?.split("").slice(0, 2).join("").toLocaleLowerCase()}</span>
+                                                </div>
+                                            }
+                                        </>
                                         :
-                                        <img src={profile?.avatar} onClick={handleNavigateProfile} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+                                        <>
+                                            {valueAvatar !== "" ?
+                                                <img src={valueAvatar} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+
+                                                :
+                                                <img src={profile?.avatar} onClick={handleNavigateProfile} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+                                            }
+                                        </>
                                     }
                                 </div>
                             </div>

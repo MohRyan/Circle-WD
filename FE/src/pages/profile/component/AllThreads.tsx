@@ -30,8 +30,7 @@ const AllThreads = ({ userLogin = false, otherProfile = false, thread }: { userL
                     <>
 
                         <div className="flex flex-col items-center justify-center text-2xl">
-                            <b>Threads masih kosong !!</b>
-                            <b>Silahkan Post !!</b>
+                            <b>Threads kosong !!</b>
                         </div>
 
                     </>

@@ -1,7 +1,6 @@
 import { Button } from "../ui/button";
 import { useAppSelector } from '@/lib/redux';
 import UseShowProfile from '@/lib/hooks/useShowProfile';
-import { LoadingDefault } from '../SVG';
 
 
 const MyProfileFooter = () => {
@@ -17,14 +16,16 @@ const MyProfileFooter = () => {
                     <div className="relative">
                         {typeof profile?.cover !== 'string' ?
                             <div className="flex items-center justify-center object-cover w-full h-20 text-4xl text-black bg-green-200 rounded-lg">
-                                <LoadingDefault />
+                                {/* <LoadingDefault /> */}
+                                <span>{username?.split("").slice(0).join("").toLocaleLowerCase()}</span>
                             </div>
                             :
                             <img src={profile?.cover} className="object-cover w-full h-20 bg-red-200 rounded-lg" alt="" />
                         }
                         {typeof profile?.avatar !== 'string' ?
                             <div className="absolute flex items-center justify-center w-16 h-16 p-1 text-2xl text-black bg-gray-600 rounded-full cursor-pointer -bottom-9 left-6">
-                                <LoadingDefault />
+                                {/* <LoadingDefault /> */}
+                                <span onClick={handleNavigateProfile}>{username?.split("").slice(0, 2).join("").toLocaleLowerCase()}</span>
                             </div>
                             :
                             <img src={profile?.avatar} onClick={handleNavigateProfile} className="absolute w-16 h-16 p-1 bg-green-600 rounded-full cursor-pointer -bottom-9 left-6" alt="" />

@@ -7,6 +7,7 @@ import { toast } from "@/components/ui/use-toast";
 import { API } from "@/lib/api";
 import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { day, hours, minutes, month, setDay, setMonth, year } from "../login";
 
 export interface IUser {
     fullname: string
@@ -37,7 +38,7 @@ const Register = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<bo
                 setIsLoading(false)
                 toast({
                     title: "Register Successfully....",
-                    description: "Friday, February 10, 2023 at 5:57 PM",
+                    description: `${setDay[day]}, ${setMonth[month]} ${month}, ${year} at ${hours}:${minutes}`,
                 })
 
                 setAuth(false)
@@ -53,7 +54,7 @@ const Register = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<bo
                 toast({
                     variant: "destructive",
                     title: "Register UnSuccessfully....",
-                    description: "Friday, February 10, 2023 at 5:57 PM",
+                    description: `${setDay[day]}, ${setMonth[month]} ${month}, ${year} at ${hours}:${minutes}`,
                 })
             })
 

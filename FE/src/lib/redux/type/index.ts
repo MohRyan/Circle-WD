@@ -24,6 +24,7 @@ export interface IThreads {
     id: string
     image?: IThreadsImage[]
     content?: string
+    createdAt?: string
 }
 export interface IThreadsImage {
     id: string

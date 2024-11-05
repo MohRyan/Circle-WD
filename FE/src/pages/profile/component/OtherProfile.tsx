@@ -27,7 +27,6 @@ interface OtherProfile {
 const OtherProfile = () => {
     const navigate = useNavigate()
     const { userId } = useParams()
-    // const { navProfile, handleNavigateProfile, handleNavigateNavbarOutProfile, handleShowEditProfile } = UseShowProfile()
     const { handleNavigateProfile, handleNavigateNavbarOutProfile, } = UseShowProfile()
     const [dataOtherProfile, setDataOtherProfile] = useState<OtherProfile>()
     const [dataThreads, setDataThreads] = useState<IThreads[]>([])
@@ -39,9 +38,10 @@ const OtherProfile = () => {
         setDataThreads(res.data.thread)
         // setIsLoadingThreads(false)
     }
+
     useEffect(() => {
         getOtherProfile()
-    }, [])
+    }, [userId])
 
     return (
         <div className='w-full'>
@@ -54,8 +54,22 @@ const OtherProfile = () => {
                     <span className='text-2xl'>{dataOtherProfile?.fullname}</span>
                 </div>
                 <div className="relative pb-4">
-                    <img src={dataOtherProfile?.profile?.cover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
-                    <img src={dataOtherProfile?.profile?.avatar} onClick={handleNavigateProfile} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+                    {typeof dataOtherProfile?.profile?.cover !== 'string' ?
+                        <div className="flex items-center justify-center object-cover w-full text-4xl text-black bg-green-200 rounded-lg h-52">
+                            {/* <LoadingDefault /> */}
+                            <span>{dataOtherProfile?.username?.split("").slice(0).join("").toLocaleLowerCase()}</span>
+                        </div>
+                        :
+                        <img src={dataOtherProfile?.profile?.cover} className="object-cover w-full bg-red-200 rounded-lg h-52" alt="" />
+                    }
+                    {typeof dataOtherProfile?.profile?.avatar !== 'string' ?
+                        <div className="absolute flex items-center justify-center w-32 h-32 p-1 text-2xl text-black bg-green-600 rounded-full cursor-pointer -bottom-9 left-12">
+                            {/* <LoadingDefault /> */}
+                            <span onClick={handleNavigateProfile}>{dataOtherProfile?.username.split("").slice(0, 2).join("").toLocaleLowerCase()}</span>
+                        </div>
+                        :
+                        <img src={dataOtherProfile?.profile?.avatar} onClick={handleNavigateProfile} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
+                    }
                 </div>
                 <div className="flex justify-end pb-8">
                     <Button variant={"profile"} className='px-20'><span className="z-20 ">Edit Profile</span></Button>

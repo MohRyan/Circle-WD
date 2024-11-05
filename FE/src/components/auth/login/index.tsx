@@ -11,6 +11,14 @@ import { API } from "@/lib/api";
 import { LoadingDefault } from "@/components/SVG";
 import OptionPageProfile from "./OptionPageProfile";
 
+export let setDay = ['Ahad', "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"]
+export let setMonth = ['Januari', "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+export const timeNow = new Date()
+export const day = timeNow.getDay()
+export const month = timeNow.getMonth()
+export const year = timeNow.getFullYear()
+export const hours = timeNow.getHours()
+export const minutes = timeNow.getMinutes()
 
 const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -25,14 +33,6 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
         password: ""
     })
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    let setDay = ['Ahad', "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"]
-    let setMonth = ['Januari', "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-    const timeNow = new Date()
-    const day = timeNow.getDay()
-    const month = timeNow.getMonth()
-    const year = timeNow.getFullYear()
-    const hours = timeNow.getHours()
-    const minutes = timeNow.getMinutes()
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault()
@@ -61,7 +61,9 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
 
     useEffect(() => {
         if (token) {
-            if (profile?.avatar !== undefined) {
+            if (profile?.avatar === null) {
+                navigate('/auth');
+            } else {
                 navigate('/');
             }
         }

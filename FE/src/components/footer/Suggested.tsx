@@ -4,10 +4,15 @@ import { ISearch } from '@/pages/search'
 import { IconProfileUser } from '../SVG'
 import { SkeletonUsers } from '../Skeleton'
 import FollowButton from '@/pages/follows/components/FollowButton'
+import { Link } from 'react-router-dom'
+import UseShowProfile from '@/lib/hooks/useShowProfile'
 
 const Suggested = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [dataSuggest, setDataSuggest] = useState<ISearch[]>([])
+    const { handleNavigateNavbarOutProfile } = UseShowProfile()
+
+
 
 
     const suggestUsers = async () => {
@@ -34,12 +39,21 @@ const Suggested = () => {
                     <div className="flex flex-col gap-4">
                         {
                             dataSuggest.map((item, index) => (
-                                <div key={index} className="flex items-center justify-between w-full text-sm">
+                                <div key={index} className="flex items-center w-full text-sm justify-betw">
                                     <div className="flex items-center w-full">
                                         {item.profile?.avatar ?
-                                            <img src={item.profile?.avatar} className='w-10 h-10 bg-black rounded-full' alt="" />
+                                            <Link to={`profile/${item.id}`}>
+                                                {item.profile?.avatar ?
+                                                    <img src={item.profile?.avatar} onClick={handleNavigateNavbarOutProfile} className='w-12 h-10 rounded-full' alt="" />
+                                                    :
+                                                    <IconProfileUser className='w-10 h-10 rounded-full' />
+                                                }
+                                            </Link>
+                                            // <img src={item.profile?.avatar} className='w-10 h-10 bg-black rounded-full' alt="" />
                                             :
-                                            <IconProfileUser className='w-12 h-12 rounded-full' />
+                                            <Link to={`profile/${item.id}`} onClick={handleNavigateNavbarOutProfile}>
+                                                <IconProfileUser className='w-10 h-10 rounded-full' />
+                                            </Link>
                                         }
                                         <div className='flex flex-col pl-2'>
                                             <span className='text-sm'>{item.fullname}</span>

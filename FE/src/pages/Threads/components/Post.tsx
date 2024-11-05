@@ -14,14 +14,15 @@ interface IProps {
 }
 
 const Post = ({ handleFormThreads, handleFileChange, setDataThreadsPost, dataThreadsPost, isLoadingButtonPost }: IProps) => {
-    const { profile } = useAppSelector((state) => state.auth.userLogin)
+    const { profile, username } = useAppSelector((state) => state.auth.userLogin)
 
     return (
         <>
             <div className='flex items-center gap-5 py-5'>
                 {typeof profile?.avatar !== 'string' ?
                     <div className="flex items-center justify-center text-black bg-gray-300 rounded-full w-14 h-14">
-                        <LoadingDefault />
+                        {/* <LoadingDefault /> */}
+                        {username?.split("").slice(0, 2).join("").toLocaleLowerCase()}
                     </div>
                     :
                     <img src={profile?.avatar} className='rounded-full w-14 h-14' alt="" />

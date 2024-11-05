@@ -40,6 +40,8 @@ export const ThreadsCard = ({ item, profile, getThreads }: { item: IThreads, pro
                 alert("gagal>>>")
             })
     }
+    const getDate = item.createdAt?.split("T")[0].split("-").reverse().join(" - ")
+
     return (
         <div className={`flex flex-col px-5 hover:border-green-500 pt-4 ${profile ? "border-b-2 pb-4" : "border-t-2"} rounded-[50px] border-content`}>
             <div className="flex justify-between pr-5">
@@ -52,7 +54,10 @@ export const ThreadsCard = ({ item, profile, getThreads }: { item: IThreads, pro
                         }
                     </Link>
                     <div className='flex flex-col'>
-                        <b>{item.author.fullname}</b>
+                        <div className="flex gap-5">
+                            <b>{item.author.fullname}</b>
+                            <span className='text-content'>{getDate}</span>
+                        </div>
                         <span className='text-content'>@{item.author.username}</span>
                     </div>
                 </div>

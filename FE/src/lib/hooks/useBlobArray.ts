@@ -4,6 +4,7 @@ import { IThreads } from "../redux/type"
 import { IThreadsV } from "@/pages/Threads/components/ThreadsCard"
 import { API } from "../api"
 import { handlePostThreads, IThreadsPost } from "../api/call/threadsProfileApi"
+import { day, hours, minutes, month, setDay, setMonth, year } from "@/components/auth/login"
 
 export interface IProps {
     // dataThreads: IThreads
@@ -23,7 +24,8 @@ export const useBlobArray = () => {
             },
             id: "",
             image: [],
-            content: ""
+            content: "",
+            createdAt: ""
         },
 
     ])
@@ -65,7 +67,7 @@ export const useBlobArray = () => {
             getThreads()
             setIsLoadingButtonPost(false)
             toast("Post Successfully!!!!!", {
-                description: "Sunday, December 03, 2023 at 9:00 AM",
+                description: `${setDay[day]}, ${setMonth[month]} ${month}, ${year} at ${hours}:${minutes}`
             })
             setDataThreadsPost({
                 content: "",
