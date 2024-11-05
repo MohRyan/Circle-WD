@@ -58,7 +58,7 @@ const Navbar = () => {
                 key={index}
                 onClick={item.propsProfile}
                 className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "font-bold text-second text-2xl border-l-2 border-second pl-2" : "hover:font-bold hover:text-second hover:text-2xl hover:border-l-2 hover:border-second hover:pl-2 duration-1"
+                  isPending ? "pending" : isActive ? "font-bold text-second text-2xl border-l-2 border-second pl-2 duration-300" : "hover:font-bold hover:text-second hover:text-2xl hover:border-l-2 hover:border-second hover:pl-2 duration-300"
                 }
               >
                 <div key={index} className="flex w-[90%] items-center gap-4">

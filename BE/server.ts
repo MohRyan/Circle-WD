@@ -9,9 +9,10 @@ dotenv.config();
 const PORT = 4000;
 const app = express();
 
-app.use(cors({
-  origin: 'https://circle-wd-fe.vercel.app' // Ganti dengan domain Anda
-}));
+// app.use(cors({
+//   origin: ['https://circle-wd-fe.vercel.app']
+// }));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use("/uploads", express.static(path.join(__dirname, "src/uploads"))) // untuk menjadikan sebuah folder bisa diakses secara global

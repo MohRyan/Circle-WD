@@ -13,6 +13,7 @@ import FormEditAllProfile from './FormEditAllProfile'
 
 const EditProfile = () => {
     const { profile, fullname, username } = useAppSelector((state) => state.auth.userLogin)
+    // const { editProfile, handleNavigateProfile, handleNavigateNavbarOutProfile, handleOutEditProfile } = UseShowProfile()
     const { editProfile, handleNavigateProfile, handleOutEditProfile } = UseShowProfile()
     const [valueAvatar, setValueAvatar] = useState("")
     const [valueCover, setValueCover] = useState("")
@@ -46,7 +47,7 @@ const EditProfile = () => {
                                                         if (!e.target.files) return;
                                                         const cover = e.target.files
                                                         setValueCover!(URL.createObjectURL(cover[0]) as string)
-                                                        // setValueUpdateProfile({ ...valueUpdateProfile!, cover: cover })
+                                                        setValueUpdateAllProfile({ ...valueUpdateAllProfile!, cover: cover })
 
                                                     }} className="hidden" id={"addImageCover"} />
                                                 </label>
@@ -59,7 +60,7 @@ const EditProfile = () => {
                                                         <Checkbox onCheckedChange={() => {
                                                             // setActive(index)
                                                             setValueCover!(item.cover)
-                                                            // setValueUpdateProfile({ ...valueUpdateProfile!, avatar: item.avatar })
+                                                            setValueUpdateAllProfile({ ...valueUpdateAllProfile!, cover: item.cover })
                                                         }
                                                         } className="hidden" value={item.cover} id={item.id} />
                                                     </label>
@@ -88,7 +89,7 @@ const EditProfile = () => {
                                                         if (!e.target.files) return;
                                                         const avatar = e.target.files
                                                         setValueAvatar!(URL.createObjectURL(avatar[0]) as string)
-                                                        // setValueUpdateProfile({ ...valueUpdateProfile!, cover: cover })
+                                                        setValueUpdateAllProfile({ ...valueUpdateAllProfile!, avatar: avatar })
 
                                                     }} className="hidden" id={"addImageAvatar"} />
                                                 </label>
@@ -100,7 +101,7 @@ const EditProfile = () => {
                                                         <Checkbox onCheckedChange={() => {
                                                             // setActive(index)
                                                             setValueAvatar!(item.avatar)
-                                                            // setValueUpdateProfile({ ...valueUpdateProfile!, avatar: item.avatar })
+                                                            setValueUpdateAllProfile({ ...valueUpdateAllProfile!, avatar: item.avatar })
                                                         }
                                                         } className="hidden" value={item.avatar} id={String(index)} />
                                                     </label>
@@ -133,7 +134,8 @@ const EditProfile = () => {
                                 <span className='text-lg'>{profile?.bio}</span>
                             </div>
                             {/* =============== Batas Form */}
-                            <FormEditAllProfile setValueUpdateAllProfile={setValueUpdateAllProfile} valueUpdateAllProfile={valueUpdateAllProfile} />
+                            {/* <FormEditAllProfile setValueUpdateAllProfile={setValueUpdateAllProfile} valueUpdateAllProfile={valueUpdateAllProfile} /> */}
+                            <FormEditAllProfile />
                         </div>
                     </div>
                 </div>

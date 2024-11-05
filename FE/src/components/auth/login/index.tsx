@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { FormEvent, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { LOGIN } from "@/lib/redux/slice/auth";
 import { toast } from "@/components/ui/use-toast";
@@ -14,17 +14,25 @@ import OptionPageProfile from "./OptionPageProfile";
 
 const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
-    const [coba, setCoba] = useState<boolean>(false)
 
     const dispatch = useAppDispatch()
     const { token } = useAppSelector((state) => state.auth)
-    // const { fullname, profile } = useAppSelector((state) => state.auth.user)
+    const { profile } = useAppSelector((state) => state.auth.userLogin)
+
 
     const [dataLogin, setDataLogin] = useState({
         email: "",
         password: ""
     })
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    let setDay = ['Ahad', "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"]
+    let setMonth = ['Januari', "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+    const timeNow = new Date()
+    const day = timeNow.getDay()
+    const month = timeNow.getMonth()
+    const year = timeNow.getFullYear()
+    const hours = timeNow.getHours()
+    const minutes = timeNow.getMinutes()
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault()
@@ -34,26 +42,33 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
             setIsLoading(false)
             toast({
                 title: "Login Successfully....",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                description: `${setDay[day]}, ${setMonth[month]} ${month}, ${year} at ${hours}:${minutes}`,
             })
             dispatch(LOGIN(res.data))
-            setCoba(true)
         } catch (error) {
             setIsLoading(false)
             toast({
                 variant: "destructive",
                 title: "Login UnSuccessfully....",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                description: `${setDay[day]}, ${setMonth[month]} ${month}, ${year} at ${hours}:${minutes}`,
             })
 
         }
 
     }
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (profile?.avatar !== undefined) {
+            navigate('/');
+        }
+    }, [profile, navigate]);
+
 
     return (
         <div className="flex justify-center h-screen text-white ">
-            {coba ?
+            {token ?
                 <div className=""></div>
                 :
                 <div className={`flex flex-col justify-center gap-3 autoShow`}>
@@ -101,10 +116,8 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
                 </div>
             }
 
-            {!token ?
-                <div className="">
-                    <span className="text-5xl"></span>
-                </div>
+            {profile?.avatar === undefined ?
+                ""
                 :
                 <OptionPageProfile />
             }

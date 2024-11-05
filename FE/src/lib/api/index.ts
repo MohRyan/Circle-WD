@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "https://circle-wd.vercel.app",
+  baseURL: "https://circle-wd.vercel.app/",
   // baseURL: "http://localhost:4000",
 });
 

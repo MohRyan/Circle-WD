@@ -9,7 +9,7 @@ import AllImages from './component/AllImages'
 
 const Profile = () => {
     const { profile, fullname, follower, following } = useAppSelector((state) => state.auth.userLogin)
-    const { handleNavigateProfile, handleNavigateNavbarOutProfile, handleShowEditProfile } = UseShowProfile()
+    const { handleNavigateProfile, handleNavigateNavbarOutProfile } = UseShowProfile()
     const navigate = useNavigate()
     return (
         <div className='w-full'>
@@ -27,7 +27,7 @@ const Profile = () => {
                     <img src={profile?.avatar} onClick={handleNavigateProfile} className="absolute w-32 h-32 p-1 bg-green-600 rounded-full cursor-pointer -bottom-12 left-20" alt="" />
                 </div>
                 <div className="flex justify-end pb-8">
-                    <Button variant={"profile"} onClick={handleShowEditProfile} className='px-20'><span className="z-20 ">Edit Profile</span></Button>
+                    <Button variant={"profile"} className='px-20'><span className="z-20 ">Edit Profile</span></Button>
                 </div>
                 <div className="flex flex-col gap-1 ">
                     <b className="text-3xl">{fullname}</b>

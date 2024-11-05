@@ -19,6 +19,7 @@ export interface IUpdateAllProfilePut {
 export const updateProfileAsync = createAsyncThunk<UpdateProfileAsyncPayload, IUpdateProfilePut>(
     'updateProfile',
     async (newData: IUpdateProfilePut) => {
+        console.log("🚀 ~ newData:", newData.avatar)
         const formData = new FormData()
 
         if (typeof newData.avatar === 'string') {
@@ -33,6 +34,7 @@ export const updateProfileAsync = createAsyncThunk<UpdateProfileAsyncPayload, IU
             formData.append("cover", newData.cover[0]);
         }
 
+        console.log("🚀 ~ formData:", formData)
         formData.append("bio", newData.bio!)
         const response = await API.put(`/user`, formData, {
             headers: {

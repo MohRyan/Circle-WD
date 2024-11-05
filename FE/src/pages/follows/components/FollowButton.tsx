@@ -1,5 +1,6 @@
 import NewtonLoader from '@/components/loaders/NewtonLoader'
 import { Button } from '@/components/ui/button'
+// import { getThreadsByUserId } from '@/lib/api/call/threadsProfileApi'
 import { useCheckToken } from '@/lib/hooks/useCheckToken'
 import { useAppDispatch, useAppSelector } from '@/lib/redux'
 import { fetchFollowStatus, handleFollow } from '@/lib/redux/async/followStatus'

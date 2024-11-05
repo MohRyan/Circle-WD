@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/lib/redux'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { OptionProfile } from "./OptionProfile";
 import { OptionCover } from "./OptionCover";
 import { Button } from '@/components/ui/button';
@@ -15,18 +15,18 @@ export interface IPropsUpdate {
 }
 
 const OptionPageProfile = () => {
-    const { fullname, profile } = useAppSelector((state) => state.auth.userLogin)
+    const { fullname } = useAppSelector((state) => state.auth.userLogin)
     const [valueUpdateProfile, setValueUpdateProfile] = useState<IUpdateProfilePut>({
         avatar: null,
         cover: null,
         bio: ""
     })
-    console.log("🚀 ~ OptionPageProfile ~ profile:", profile?.avatar)
     const [valueAvatar, setValueAvatar] = useState("")
     const [valueCover, setValueCover] = useState("")
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const { checkToken } = useCheckToken()
+
 
     // if (profile?.avatar || profile?.cover !== null) {
     //     navigate("/")
@@ -35,8 +35,8 @@ const OptionPageProfile = () => {
     const handleUpdateProfile = () => {
         dispatch(updateProfileAsync(valueUpdateProfile))
         // dispatch(UPDATEPROFILE({ cover: valueCover, profile: valueProfile, name: "Moh Ryan Khalifatul Huda" }))
-        checkToken();
         navigate("/")
+        checkToken();
     }
     return (
         <div className={`flex flex-col justify-center py-5 slide-in-bck-top`}>
