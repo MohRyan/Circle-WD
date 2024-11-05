@@ -60,8 +60,10 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (profile?.avatar !== undefined) {
-            navigate('/');
+        if (token) {
+            if (profile?.avatar !== undefined) {
+                navigate('/');
+            }
         }
     }, [profile, navigate]);
 
@@ -116,7 +118,7 @@ const Login = ({ setAuth }: { setAuth: React.Dispatch<React.SetStateAction<boole
                 </div>
             }
 
-            {profile?.avatar === undefined ?
+            {!token ?
                 ""
                 :
                 <OptionPageProfile />
